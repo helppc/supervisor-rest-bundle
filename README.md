@@ -41,14 +41,14 @@ This package is currently in the active development.
 1. Enable the bundle in `config/bundles.php` by adding it to the array:
 
     ```php
-    HelpPC\Bundle\SupervisorBundle\SupervisorBundle::class => ['all' => true]
+    HelpPC\Bundle\SupervisorRestBundle\SupervisorRestBundle::class => ['all' => true]
     ```
 
 1. Import the routes inside your `config/routes/helppc_supervisor.yaml` file:
 
     ```yaml
     supervisor:
-      resource: "@SupervisorBundle/Resources/config/routing.xml"
+      resource: "@SupervisorRestBundle/Resources/config/routing.xml"
       prefix:   /supervisor
     ```
 
@@ -64,7 +64,7 @@ security:
 
 ## Reporting issues
 
-Use the [issue tracker](https://gitlab.com/helppc/supervisor-bundle/-/issues) to report any issues you might have.
+Use the [issue tracker](https://gitlab.com/helppc/supervisor-rest-bundle/-/issues) to report any issues you might have.
 
 ## License
 

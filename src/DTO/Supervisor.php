@@ -3,7 +3,6 @@
 namespace HelpPC\Bundle\SupervisorRestBundle\DTO;
 
 use JMS\Serializer\Annotation as Serializer;
-use Supervisor\Process;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -76,7 +75,7 @@ class Supervisor
     public string $supervisorVersion;
 
     /**
-     * @var Process[]
+     * @var SupervisorProcess[]
      * @Serializer\Type("array<HelpPC\Bundle\SupervisorRestBundle\DTO\SupervisorProcess>")
      */
     public array $process = [];
@@ -88,8 +87,8 @@ class Supervisor
         $self->running = $supervisor->isRunning();
         $self->connected = $supervisor->isConnected();
         $self->pid = $supervisor->getPID();
-        $self->stateCode = $supervisor->getState()['statecode']??0;
-        $self->stateName = $supervisor->getState()['statename']??'';
+        $self->stateCode = $supervisor->getState()['statecode'] ?? 0;
+        $self->stateName = $supervisor->getState()['statename'] ?? '';
         $self->identification = $supervisor->getIdentification();
         $self->apiVersion = $supervisor->getAPIVersion();
         $self->supervisorVersion = $supervisor->getSupervisorVersion();

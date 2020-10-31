@@ -296,7 +296,13 @@ class SupervisorController extends AbstractController
         return sprintf('%s:%s', $group, $name);
     }
 
-    public function getApiResponse($data, int $statusCode = 200, $status = 'success'): Response
+    /**
+     * @param mixed $data
+     * @param int $statusCode
+     * @param string $status
+     * @return Response
+     */
+    public function getApiResponse($data, int $statusCode = 200, string $status = 'success'): Response
     {
 
         $data = [
