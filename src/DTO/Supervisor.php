@@ -5,6 +5,7 @@ namespace HelpPC\Bundle\SupervisorRestBundle\DTO;
 use JMS\Serializer\Annotation as Serializer;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
+use Nelmio\ApiDocBundle\Annotation\Model;
 
 /**
  * @SWG\Schema()
@@ -28,25 +29,24 @@ class Supervisor
     public bool $connected;
 
     /**
-     * @Assert\NotBlank
      * @Assert\Type(type="integer")
      * @Serializer\Type("integer")
-     * @SWG\Property(type="integer", title="Connected")
+     * @SWG\Property(type="integer", title="Process id")
      */
-    public int $pid;
+    public ?int $pid = null;
 
     /**
      * @Assert\NotBlank
      * @Assert\Type(type="integer")
      * @Serializer\Type("integer")
-     * @SWG\Property(type="integer", title="Connected")
+     * @SWG\Property(type="integer", title="Satus code")
      */
     public int $stateCode;
 
     /**
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Status name")
      */
     public string $stateName;
 
@@ -54,7 +54,7 @@ class Supervisor
      * @Assert\NotBlank
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Supervisor identification")
      */
     public string $identification;
 
@@ -62,7 +62,7 @@ class Supervisor
      * @Assert\NotBlank
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="API version")
      */
     public string $apiVersion;
 
@@ -70,13 +70,16 @@ class Supervisor
      * @Assert\NotBlank
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Supervisor version")
      */
     public string $supervisorVersion;
 
     /**
      * @var SupervisorProcess[]
      * @Serializer\Type("array<HelpPC\Bundle\SupervisorRestBundle\DTO\SupervisorProcess>")
+     * @SWG\Property(type="array",@SWG\Items(
+     *                      ref=@Model(type=HelpPC\Bundle\SupervisorRestBundle\DTO\SupervisorProcess::class)
+     *                  )), description="Collection of process", title="Processes")
      */
     public array $process = [];
 

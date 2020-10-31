@@ -1,58 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <routes xmlns="http://symfony.com/schema/routing"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="supervisor" path="/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::indexAction</default>
+    <route id="supervisor" path="/" methods="GET">
+        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::indexAction
+        </default>
     </route>
 
-    <route id="supervisor.process.stop" path="/{key}/stop-process/{name}/{group}/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::stopProcessAction</default>
+    <route id="supervisor.process.stop" path="/{supervisorKey}/stopProcess/{processName}/{processGroup}" methods="PUT">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::stopProcessAction
+        </default>
     </route>
 
-    <route id="supervisor.process.start" path="/{key}/start-process/{name}/{group}/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::startProcessAction</default>
+    <route id="supervisor.process.start" path="/{supervisorKey}/startProcess/{processName}/{processGroup}" methods="PUT">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::startProcessAction
+        </default>
     </route>
 
-    <route id="supervisor.processes.info" path="/{key}/show-processes-info/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showProcessInfoAllAction</default>
+    <route id="supervisor.processes.info" path="/{supervisorKey}/showProcessesInfo" methods="GET">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showProcessInfoAllAction
+        </default>
     </route>
 
-    <route id="supervisor.processes.start" path="/{key}/start-all-processes/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::startAllProcessesAction</default>
+    <route id="supervisor.processes.start" path="/{supervisorKey}/startAllProcesses" methods="PUT">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::startAllProcessesAction
+        </default>
     </route>
 
-    <route id="supervisor.processes.stop" path="/{key}/stop-all-processes/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::stopAllProcessesAction</default>
+    <route id="supervisor.processes.stop" path="/{supervisorKey}/stopAllProcesses" methods="PUT">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::stopAllProcessesAction
+        </default>
     </route>
 
-    <route id="supervisor.log" path="/{key}/show-log/{offset}/{limit}">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showSupervisorLogAction</default>
+    <route id="supervisor.log" path="/{supervisorKey}/showLog/{offset}/{limit}" methods="GET">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showSupervisorLogAction
+        </default>
         <default key="offset">0</default>
         <requirement key="offset">\d+</requirement>
         <default key="limit">0</default>
         <requirement key="limit">\d+</requirement>
     </route>
 
-    <route id="supervisor.log.clear" path="/{key}/clear-log">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::clearSupervisorLogAction</default>
+    <route id="supervisor.log.clear" path="/{supervisorKey}/clearLog" methods="DELETE">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::clearSupervisorLogAction
+        </default>
     </route>
 
-    <route id="supervisor.process.log" path="/{key}/show-process-log/{name}/{group}/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showProcessLogAction</default>
+    <route id="supervisor.process.log" path="/{supervisorKey}/showProcessLog/{processName}/{processGroup}" methods="GET">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showProcessLogAction
+        </default>
     </route>
 
-    <route id="supervisor.process.error" path="/{key}/show-process-err-log/{name}/{group}/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showProcessLogErrAction</default>
+    <route id="supervisor.process.error" path="/{supervisorKey}/showProcessErrLog/{processName}/{processGroup}" methods="GET">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showProcessLogErrAction
+        </default>
     </route>
 
-    <route id="supervisor.process.log.clear" path="/{key}/clear-process-log/{name}/{group}/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::clearProcessLogAction</default>
+    <route id="supervisor.process.log.clear" path="/{supervisorKey}/clearProcessLog/{processName}/{processGroup}" methods="DELETE">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::clearProcessLogAction
+        </default>
     </route>
 
-    <route id="supervisor.process.info" path="/{key}/show-process-info/{name}/{group}/">
-        <default key="_controller">HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showProcessInfoAction</default>
+    <route id="supervisor.process.info" path="/{supervisorKey}/showProcessInfo/{processName}/{processGroup}" methods="GET">
+        <default key="_controller">
+            HelpPC\Bundle\SupervisorRestBundle\Controller\SupervisorController::showProcessInfoAction
+        </default>
     </route>
 </routes>

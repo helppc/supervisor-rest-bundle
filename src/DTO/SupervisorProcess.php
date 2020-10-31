@@ -16,7 +16,7 @@ class SupervisorProcess
      * @Assert\NotBlank
      * @Assert\Type(type="bool")
      * @Serializer\Type("bool")
-     * @SWG\Property(type="boolean", title="Connected")
+     * @SWG\Property(type="boolean", title="Running")
      */
     public bool $running;
 
@@ -32,80 +32,77 @@ class SupervisorProcess
      * @Assert\NotBlank
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Group name")
      */
     public string $group;
     /**
      * @Serializer\Type("DateTimeImmutable")
-     * @SWG\Property(type="string", format="datetime", title="Date of creation")
+     * @SWG\Property(type="string", format="datetime", title="Date of last start")
      */
     public ?\DateTimeImmutable $start = null;
+
     /**
      * @Serializer\Type("DateTimeImmutable")
-     * @SWG\Property(type="string", format="datetime", title="Date of creation")
+     * @SWG\Property(type="string", format="datetime", title="Date of last stop")
      */
     public ?\DateTimeImmutable  $stop = null;
-    /**
-     * @Serializer\Type("DateTimeImmutable")
-     * @SWG\Property(type="string", format="datetime", title="Date of creation")
-     */
-    public ?\DateTimeImmutable  $now = null;
+
     /**
      * @Assert\NotBlank
      * @Assert\Type(type="integer")
      * @Serializer\Type("integer")
-     * @SWG\Property(type="integer", title="Connected")
+     * @SWG\Property(type="integer", title="Status code")
      */
     public int $stateCode;
     /**
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Status name")
      */
     public string $stateName;
     /**
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Spawn error")
      */
     public string $spawnerr;
     /**
      * @Assert\NotBlank
      * @Assert\Type(type="integer")
      * @Serializer\Type("integer")
-     * @SWG\Property(type="integer", title="Connected")
+     * @SWG\Property(type="integer", title="Exit status")
      */
-    public int $exitstatus;
+    public int $exitStatus;
     /**
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Path for log file")
      */
     public string $logfile;
     /**
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Path for standard output file")
      */
     public string $stdoutLogFile;
     /**
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Path for standard error file")
      */
     public string $stderrLogFile;
 
     /**
      * @Assert\Type(type="integer")
      * @Serializer\Type("integer")
-     * @SWG\Property(type="integer", title="Connected")
+     * @SWG\Property(type="integer", title="Process id")
      */
-    public int $pid;
+    public ?int $pid = null;
 
     /**
      * @Assert\Type(type="string")
      * @Serializer\Type("string")
-     * @SWG\Property(type="string", title="Connected")
+     * @SWG\Property(type="string", title="Description")
      */
     public ?string $description = null;
 
@@ -127,13 +124,10 @@ class SupervisorProcess
             $self->stop = new \DateTimeImmutable('@' . $payload['stop']);
         }
 
-        if (!empty($payload['now'])) {
-            $self->now = new \DateTimeImmutable('@' . $payload['now']);
-        }
         $self->stateCode = $payload['state'];
         $self->stateName = $payload['statename'];
         $self->spawnerr = $payload['spawnerr'];
-        $self->exitstatus = $payload['exitstatus'];
+        $self->exitStatus = $payload['exitstatus'];
         $self->logfile = $payload['logfile'];
         $self->stdoutLogFile = $payload['stdout_logfile'];
         $self->stderrLogFile = $payload['stderr_logfile'];
