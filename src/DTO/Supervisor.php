@@ -12,6 +12,14 @@ use Nelmio\ApiDocBundle\Annotation\Model;
  */
 class Supervisor
 {
+
+    /**
+     * @Assert\Type(type="string")
+     * @Serializer\Type("string")
+     * @SWG\Property(type="string", title="Supervisor name")
+     */
+    public string $name;
+
     /**
      * @Assert\NotBlank
      * @Assert\Type(type="bool")
