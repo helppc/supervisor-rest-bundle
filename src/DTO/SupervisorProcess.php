@@ -107,7 +107,7 @@ class SupervisorProcess
     public ?string $description = null;
 
 
-    public static function mapProcess(\Supervisor\Process $process, string $supervisorKey): SupervisorProcess
+    public static function mapProcess(\Supervisor\Process $process): SupervisorProcess
     {
         $self = new self();
         $self->running = $process->isRunning();
@@ -133,7 +133,6 @@ class SupervisorProcess
         $self->stderrLogFile = $payload['stderr_logfile'];
         $self->pid = $payload['pid'];
         $self->description = $payload['description'];
-        $self->name = $supervisorKey;
 
 
         return $self;

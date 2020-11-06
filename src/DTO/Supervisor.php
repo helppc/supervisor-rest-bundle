@@ -92,7 +92,7 @@ class Supervisor
     public array $process = [];
 
 
-    public static function mapSupervisor(\Supervisor\Supervisor $supervisor): Supervisor
+    public static function mapSupervisor(\Supervisor\Supervisor $supervisor, string $supervisorKey): Supervisor
     {
         $self = new self();
         $self->running = $supervisor->isRunning();
@@ -103,6 +103,7 @@ class Supervisor
         $self->identification = $supervisor->getIdentification();
         $self->apiVersion = $supervisor->getAPIVersion();
         $self->supervisorVersion = $supervisor->getSupervisorVersion();
+        $self->name = $supervisorKey;
 
         foreach ($supervisor->getAllProcesses() as $process) {
             $self->process[] = SupervisorProcess::mapProcess($process);
