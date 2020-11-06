@@ -53,7 +53,7 @@ class SupervisorController extends AbstractController
          * @var Supervisor $supervisor
          */
         foreach ($this->supervisorManager->getSupervisors() as $supervisorKey => $supervisor) {
-            $data[$supervisorKey] = \HelpPC\Bundle\SupervisorRestBundle\DTO\Supervisor::mapSupervisor($supervisor, $supervisorKey);
+            $data[] = \HelpPC\Bundle\SupervisorRestBundle\DTO\Supervisor::mapSupervisor($supervisor, $supervisorKey);
         }
 
         return $this->getApiResponse($data, Response::HTTP_OK);
