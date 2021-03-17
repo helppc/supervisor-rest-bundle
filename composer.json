@@ -26,10 +26,10 @@
     "nyholm/psr7": "^1.3",
     "supervisorphp/supervisor": "^4.0",
     "symfony/flex": "^1.3.1",
-    "symfony/framework-bundle": "5.1.* || 4.4.*",
-    "symfony/http-client": "5.1.* || 4.4.*",
-    "symfony/validator": "5.1.*|| 4.4.*",
-    "symfony/yaml": "5.1.*|| 4.4.*"
+    "symfony/framework-bundle": "^4.4 || ^5.1",
+    "symfony/http-client": "^4.4 || ^5.1",
+    "symfony/validator": "^4.4 || ^5.1",
+    "symfony/yaml": "^4.4 || ^5.1"
   },
   "suggest": {
     "php-http/httplug-bundle": "to provide required HTTP client with ease."
